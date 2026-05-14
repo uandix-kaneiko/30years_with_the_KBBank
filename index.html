@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KB국민은행 동기회 30주년 초대장 - 모바일 세로형</title>
+  <style>
+    :root{
+      --bg:#0f0d0a;
+      --bg2:#1a1510;
+      --card:#17130f;
+      --card2:#201a14;
+      --gold:#c7a15b;
+      --gold-soft:#ecd7aa;
+      --gold-deep:#9d7840;
+      --line:rgba(199,161,91,.26);
+      --text:#f5efe4;
+      --muted:#d4c8b4;
+      --muted2:#a89980;
+      --shadow:0 20px 50px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(199,161,91,.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(199,161,91,.10), transparent 24%),
+        linear-gradient(180deg, #090806 0%, #17120d 55%, #0d0b08 100%);
+      font-family:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+      color:var(--text);
+      min-height:100vh;
+      padding:18px 12px 28px;
+    }
+
+    .wrap{
+      width:min(100%, 430px);
+      margin:0 auto;
+    }
+
+    .invite{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      border:1px solid rgba(199,161,91,.30);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00)),
+        linear-gradient(180deg, rgba(32,26,20,.96), rgba(18,14,10,.98));
+      box-shadow:var(--shadow);
+    }
+
+    .invite::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border:1px solid rgba(199,161,91,.16);
+      border-radius:22px;
+      pointer-events:none;
+    }
+
+    .top-glow{
+      position:absolute;
+      left:0; right:0; top:0;
+      height:220px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(236,215,170,.18), transparent 48%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+
+    .hero{
+      position:relative;
+      padding:26px 24px 30px;
+      text-align:center;
+      border-bottom:1px solid rgba(199,161,91,.14);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,0)),
+        radial-gradient(circle at 50% 0%, rgba(199,161,91,.10), transparent 42%);
+    }
+
+    .kb-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(199,161,91,.20);
+      background:rgba(255,255,255,.03);
+      margin-bottom:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+
+    .kb-chip-text{
+      text-align:left;
+      line-height:1.15;
+    }
+
+    .kb-chip-text .kr{
+      display:block;
+      font-size:12px;
+      font-weight:700;
+      color:#f6f1e8;
+      letter-spacing:-.01em;
+    }
+
+    .kb-chip-text .en{
+      display:block;
+      margin-top:3px;
+      font-size:8px;
+      color:#b3a58d;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+
+    .anniv{
+      position:relative;
+      width:112px;
+      height:112px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      border:1px solid rgba(199,161,91,.52);
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.15), transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(199,161,91,.10), transparent 66%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:
+        inset 0 0 20px rgba(255,255,255,.03),
+        0 0 0 8px rgba(199,161,91,.05),
+        0 0 34px rgba(199,161,91,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .anniv::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:50%;
+      border:1px solid rgba(199,161,91,.16);
+    }
+
+    .num{
+      position:relative;
+      font-size:42px;
+      font-weight:800;
+      letter-spacing:-.06em;
+      color:transparent;
+      background:linear-gradient(135deg, #f7ebca 0%, #c79d4b 24%, #fff5d8 42%, #a87e35 72%, #f0d598 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      text-shadow:0 0 14px rgba(240,213,152,.10);
+    }
+
+    .num::after{
+      content:"30";
+      position:absolute;
+      inset:0;
+      color:transparent;
+      background:linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.04) 40%, rgba(255,255,255,.82) 50%, rgba(255,255,255,.08) 60%, rgba(255,255,255,0) 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation:sheen 3.8s ease-in-out infinite;
+    }
+
+    .spark{
+      position:absolute;
+      color:#e8d1a0;
+      opacity:.85;
+      text-shadow:0 0 8px rgba(232,209,160,.28);
+      animation:twinkle 2.6s ease-in-out infinite;
+    }
+    .spark.s1{top:18px; right:17px; font-size:12px;}
+    .spark.s2{left:18px; bottom:18px; font-size:10px; animation-delay:.9s;}
+
+    .eyebrow{
+      margin:0 0 10px;
+      font-size:10px;
+      letter-spacing:.32em;
+      color:#b3a58d;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.15;
+      letter-spacing:-.06em;
+      color:#fff8ee;
+      font-weight:700;
+    }
+
+    .subtitle{
+      margin:18px auto 0;
+      font-size:17px;
+      line-height:1.78;
+      color:#e9decd;
+      word-break:keep-all;
+    }
+
+    .date-pill{
+      display:inline-block;
+      margin-top:20px;
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid rgba(199,161,91,.34);
+      background:rgba(255,255,255,.03);
+      color:#e8d5af;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.14em;
+    }
+
+    .section{
+      position:relative;
+      padding:26px 24px 0;
+    }
+
+    .divider{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      color:var(--gold);
+      margin:2px 0 22px;
+    }
+    .divider::before,.divider::after{
+      content:"";
+      width:46px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(199,161,91,.42), transparent);
+    }
+    .divider span{
+      font-size:11px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+    }
+
+    .letter{
+      text-align:center;
+      padding:0 2px;
+    }
+
+    .letter-title{
+      display:inline-block;
+      margin-bottom:16px;
+      padding-bottom:8px;
+      font-size:22px;
+      color:#fff4e2;
+      letter-spacing:-.04em;
+      position:relative;
+    }
+
+    .letter-title::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0;
+      width:48px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(199,161,91,.55), transparent);
+    }
+
+    .letter p{
+      margin:0;
+      font-size:17px;
+      line-height:1.95;
+      color:#e8dece;
+      word-break:keep-all;
+    }
+
+    .letter strong{color:#f2ddb1}
+
+    .details{
+      margin-top:28px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(199,161,91,.20);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      box-shadow:0 8px 22px rgba(0,0,0,.16);
+    }
+
+    .details-head{
+      text-align:center;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(199,161,91,.14);
+      font-size:12px;
+      letter-spacing:.24em;
+      color:#d7bb86;
+      text-transform:uppercase;
+      background:rgba(255,255,255,.02);
+    }
+
+    .detail-row{
+      padding:17px 18px 16px;
+      border-bottom:1px solid rgba(199,161,91,.12);
+    }
+    .detail-row:last-child{border-bottom:none}
+
+    .label{
+      display:block;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#c8ad77;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .value{
+      font-size:20px;
+      line-height:1.42;
+      letter-spacing:-.04em;
+      color:#fff7ec;
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    .detail{
+      margin-top:7px;
+      font-size:13px;
+      line-height:1.72;
+      color:#b7aa95;
+      word-break:keep-all;
+    }
+
+    .attendance{
+      margin-top:22px;
+      padding:18px 18px 6px;
+      text-align:center;
+      border-radius:20px;
+      border:1px solid rgba(199,161,91,.18);
+      background:rgba(255,255,255,.02);
+    }
+
+    .attendance .label{
+      margin-bottom:10px;
+    }
+
+    .attendance-line{
+      font-size:15px;
+      line-height:1.9;
+      color:#e6dccd;
+      word-break:keep-all;
+    }
+
+    .attendance-line strong{
+      color:#f2ddb1;
+      font-weight:800;
+      padding:0 2px;
+    }
+
+    .note{
+      text-align:center;
+      padding:28px 24px 0;
+    }
+
+    .note-title{
+      margin:0 0 14px;
+      font-size:22px;
+      color:#fff4e3;
+      letter-spacing:-.04em;
+    }
+
+    .note-text{
+      margin:0;
+      font-size:16px;
+      line-height:1.9;
+      color:#ddd0bc;
+      word-break:keep-all;
+    }
+
+    .footer{
+      text-align:center;
+      padding:30px 24px 34px;
+    }
+
+    .footer-line{
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(199,161,91,.34), transparent);
+      margin:0 0 24px;
+    }
+
+    .closing{
+      font-size:19px;
+      line-height:1.9;
+      color:#fff5e8;
+      word-break:keep-all;
+    }
+
+    .signature{
+      margin-top:18px;
+      font-size:20px;
+      font-weight:700;
+      color:#f1d9a7;
+      letter-spacing:-.04em;
+    }
+
+    .small{
+      margin-top:14px;
+      font-size:11px;
+      line-height:1.7;
+      color:#978871;
+    }
+
+    @keyframes sheen{
+      0%{transform:translateX(-120%)}
+      45%{transform:translateX(-120%)}
+      65%{transform:translateX(120%)}
+      100%{transform:translateX(120%)}
+    }
+
+    @keyframes twinkle{
+      0%,100%{opacity:.35; transform:scale(.88) rotate(0deg)}
+      50%{opacity:1; transform:scale(1.16) rotate(10deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="invite">
+      <div class="top-glow"></div>
+
+      <section class="hero">
+        <div class="kb-chip" aria-label="KB 국민은행 동기회">
+          <svg width="50" height="28" viewBox="0 0 170 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KB mark">
+            <defs>
+              <linearGradient id="mobileGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#efdcae"/>
+                <stop offset="100%" stop-color="#b88a3d"/>
+              </linearGradient>
+            </defs>
+            <text x="8" y="69" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" fill="#ffffff">KB</text>
+            <circle cx="124" cy="28" r="15" fill="url(#mobileGold)" />
+            <path d="M114 44 C126 28, 146 28, 157 42 C147 65, 125 72, 107 61 C104 58, 107 49, 114 44 Z" fill="url(#mobileGold)" />
+          </svg>
+          <div class="kb-chip-text">
+            <span class="kr">KB국민은행 동기회</span>
+            <span class="en">30th anniversary invitation</span>
+          </div>
+        </div>
+
+        <div class="anniv">
+          <span class="spark s1">✦</span>
+          <span class="spark s2">✦</span>
+          <span class="num">30</span>
+        </div>
+
+        <div class="eyebrow">KB KOOKMIN BANK ALUMNI</div>
+        <h1>30년, 다시 만나는 우리</h1>
+        <p class="subtitle">
+          KB국민은행 동기회 30주년을 맞아<br />
+          기념 라운딩과 1박 2일 재회의 시간을 준비했습니다.
+        </p>
+        <div class="date-pill">2026. 06. 19. FRI</div>
+      </section>
+
+      <section class="section">
+        <div class="divider"><span>Invitation</span></div>
+
+        <div class="letter">
+          <div class="letter-title">초대의 글</div>
+          <p>
+            같은 출발선에서 함께했던 시간이<br />
+            어느덧 30년이 되었습니다.<br />
+            <strong>KB국민은행 동기회 30주년</strong>을 맞아<br />
+            기념 라운딩과 1박 2일 재회의 시간을 준비했습니다.<br /><br />
+            오랜 시간 각자의 자리에서 최선을 다해온 우리들이<br />
+            다시 한자리에 모여<br />
+            지난 추억을 나누고, 웃음을 더하며,<br />
+            앞으로의 인연을 더욱 깊게 이어가고자 합니다.<br /><br />
+            2026년 6월 19일 금요일,<br />
+            백제CC 그리고 대천연수원에서<br />
+            동기 여러분을 기다리겠습니다.
+          </p>
+        </div>
+
+        <div class="details">
+          <div class="details-head">Event Details</div>
+
+          <div class="detail-row">
+            <span class="label">Event</span>
+            <div class="value">KB국민은행 동기회<br />30주년 기념행사</div>
+            <div class="detail">기념 라운딩 및 1박 2일 친교 모임</div>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Date</span>
+            <div class="value">2026년 6월 19일 금요일</div>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Venue</span>
+            <div class="value">백제CC</div>
+            <div class="detail">충남 부여</div>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Stay</span>
+            <div class="value">대천연수원</div>
+            <div class="detail">2026년 6월 19일 금요일 ~ 6월 20일 토요일<br />1박 2일</div>
+          </div>
+        </div>
+
+        <div class="attendance">
+          <span class="label">참석 현황</span>
+          <div class="attendance-line">
+            동기모임 참석 인원 <strong>30명</strong><br />
+            골프 라운딩 참석 인원 <strong>12명</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="note">
+        <h2 class="note-title">안내 말씀</h2>
+        <p class="note-text">
+          세부 안내사항은 참석 인원 확정 후 별도 공지드리겠습니다.
+          오랜만에 함께하는 뜻깊은 자리인 만큼, 편안한 마음으로 참석하시어
+          30년의 추억과 앞으로의 인연을 함께 나누시기 바랍니다.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-line"></div>
+        <div class="closing">
+          2026년 6월 19일 금요일,<br />
+          백제CC 그리고 대천연수원에서<br />
+          동기 여러분을 기다리겠습니다.
+        </div>
+        <div class="signature">KB국민은행 동기회 드림</div>
+        <div class="small">
+          ※ 일정 및 세부 운영사항은 현장 사정에 따라 일부 조정될 수 있습니다.
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
