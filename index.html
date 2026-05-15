@@ -112,66 +112,102 @@
       text-transform:uppercase;
     }
 
-    .anniv{
+    /* ── 메달리온 래퍼 ── */
+    .anniv-wrap{
       position:relative;
-      width:112px;
-      height:112px;
+      width:160px; height:160px;
       margin:0 auto 18px;
-      border-radius:50%;
-      border:1px solid rgba(199,161,91,.52);
-      background:
-        radial-gradient(circle at 35% 28%, rgba(255,255,255,.15), transparent 26%),
-        radial-gradient(circle at 50% 50%, rgba(199,161,91,.10), transparent 66%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow:
-        inset 0 0 20px rgba(255,255,255,.03),
-        0 0 0 8px rgba(199,161,91,.05),
-        0 0 34px rgba(199,161,91,.10);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:flex; align-items:center; justify-content:center;
+    }
+    #goldDust{
+      position:absolute;
+      top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
     }
 
+    /* 외곽 오비탈 링 1 */
+    .ro1{
+      position:absolute;
+      width:156px; height:156px;
+      border-radius:50%;
+      border-top:1px solid rgba(199,161,91,.80);
+      border-right:1px solid rgba(199,161,91,.20);
+      border-bottom:1px solid transparent;
+      border-left:1px solid rgba(199,161,91,.10);
+      animation:orbit-cw 9s linear infinite;
+      filter:drop-shadow(0 0 4px rgba(199,161,91,.30));
+    }
+    .ro1::before,.ro1::after{
+      content:"";
+      position:absolute;
+      width:5px; height:5px;
+      border-radius:50%;
+      background:radial-gradient(circle,#fff8d0,#c7a15b);
+      box-shadow:0 0 7px rgba(199,161,91,.9),0 0 14px rgba(199,161,91,.4);
+    }
+    .ro1::before{ top:-2.5px; left:50%; transform:translateX(-50%); }
+    .ro1::after { bottom:-2.5px; left:50%; transform:translateX(-50%); }
+
+    /* 오비탈 링 2 */
+    .ro2{
+      position:absolute;
+      width:136px; height:136px;
+      border-radius:50%;
+      border:1px dashed rgba(199,161,91,.16);
+      animation:orbit-ccw 20s linear infinite;
+    }
+    .ro2::before{
+      content:"";
+      position:absolute;
+      width:3px; height:3px;
+      border-radius:50%;
+      background:#e8d1a0;
+      box-shadow:0 0 6px rgba(232,209,160,.9);
+      top:-1.5px; left:50%; transform:translateX(-50%);
+    }
+
+    /* 메인 원 */
+    .anniv{
+      position:relative;
+      width:112px; height:112px;
+      border-radius:50%;
+      border:1px solid rgba(199,161,91,.48);
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.14), transparent 28%),
+        radial-gradient(circle at 50% 50%, rgba(199,161,91,.09), transparent 62%),
+        linear-gradient(180deg, rgba(40,30,20,.96), rgba(18,13,9,.98));
+      box-shadow:
+        inset 0 0 22px rgba(255,255,255,.03),
+        0 0 28px rgba(199,161,91,.14),
+        0 0 56px rgba(199,161,91,.07);
+      display:flex; align-items:center; justify-content:center;
+      animation:medallion-breathe 4.5s ease-in-out infinite;
+    }
     .anniv::before{
       content:"";
       position:absolute;
-      inset:10px;
+      inset:8px;
       border-radius:50%;
-      border:1px solid rgba(199,161,91,.16);
+      border:1px solid rgba(199,161,91,.14);
     }
 
+    /* 숫자 "30" */
     .num{
       position:relative;
-      font-size:42px;
+      z-index:1;
+      font-size:46px;
       font-weight:800;
-      letter-spacing:-.06em;
+      letter-spacing:-.07em;
       color:transparent;
-      background:linear-gradient(135deg, #f7ebca 0%, #c79d4b 24%, #fff5d8 42%, #a87e35 72%, #f0d598 100%);
+      background:linear-gradient(155deg,
+        #fff8e7 0%,#f2d98a 18%,#fffbe8 34%,
+        #c89840 55%,#f5e4a8 75%,#a87430 100%);
       -webkit-background-clip:text;
       background-clip:text;
-      text-shadow:0 0 14px rgba(240,213,152,.10);
+      filter:drop-shadow(0 2px 8px rgba(199,161,91,.28));
+      animation:num-glow 4.5s ease-in-out infinite;
     }
-
-    .num::after{
-      content:"30";
-      position:absolute;
-      inset:0;
-      color:transparent;
-      background:linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.04) 40%, rgba(255,255,255,.82) 50%, rgba(255,255,255,.08) 60%, rgba(255,255,255,0) 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      animation:sheen 3.8s ease-in-out infinite;
-    }
-
-    .spark{
-      position:absolute;
-      color:#e8d1a0;
-      opacity:.85;
-      text-shadow:0 0 8px rgba(232,209,160,.28);
-      animation:twinkle 2.6s ease-in-out infinite;
-    }
-    .spark.s1{top:18px; right:17px; font-size:12px;}
-    .spark.s2{left:18px; bottom:18px; font-size:10px; animation-delay:.9s;}
 
     .eyebrow{
       margin:0 0 10px;
@@ -406,16 +442,84 @@
       color:#978871;
     }
 
-    @keyframes sheen{
-      0%{transform:translateX(-120%)}
-      45%{transform:translateX(-120%)}
-      65%{transform:translateX(120%)}
-      100%{transform:translateX(120%)}
+    @keyframes orbit-cw  { from{transform:rotate(0deg)}  to{transform:rotate(360deg)}  }
+    @keyframes orbit-ccw { from{transform:rotate(0deg)}  to{transform:rotate(-360deg)} }
+
+    @keyframes medallion-breathe{
+      0%,100%{
+        box-shadow:
+          inset 0 0 22px rgba(255,255,255,.03),
+          0 0 24px rgba(199,161,91,.12),
+          0 0 48px rgba(199,161,91,.06);
+        border-color:rgba(199,161,91,.44);
+      }
+      50%{
+        box-shadow:
+          inset 0 0 28px rgba(255,255,255,.05),
+          0 0 38px rgba(199,161,91,.28),
+          0 0 72px rgba(199,161,91,.14);
+        border-color:rgba(199,161,91,.72);
+      }
     }
 
-    @keyframes twinkle{
-      0%,100%{opacity:.35; transform:scale(.88) rotate(0deg)}
-      50%{opacity:1; transform:scale(1.16) rotate(10deg)}
+    @keyframes num-glow{
+      0%,100%{ filter:drop-shadow(0 2px 6px rgba(199,161,91,.22)); }
+      50%     { filter:drop-shadow(0 2px 14px rgba(240,213,152,.55)) drop-shadow(0 0 24px rgba(199,161,91,.30)); }
+    }
+
+    /* ── 음악 플레이어 ── */
+    #yt-frame{
+      position:fixed;
+      top:-9999px; left:-9999px;
+      width:1px; height:1px;
+      pointer-events:none;
+    }
+    .music-btn{
+      position:fixed;
+      bottom:28px; right:20px;
+      z-index:9999;
+      width:52px; height:52px;
+      border-radius:50%;
+      border:1.5px solid rgba(199,161,91,.55);
+      background:
+        radial-gradient(circle at 38% 30%, rgba(255,255,255,.18), transparent 44%),
+        linear-gradient(145deg,#2a2018,#16110c);
+      box-shadow:
+        0 0 0 6px rgba(199,161,91,.07),
+        0 8px 28px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.07);
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .music-btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 0 8px rgba(199,161,91,.11),0 12px 34px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.09);
+    }
+    .music-btn:active{ transform:scale(.95); }
+    .music-icon{ font-size:22px; color:#e8cb80; text-shadow:0 0 10px rgba(232,203,128,.35); }
+    .music-btn.playing::before{
+      content:""; position:absolute; inset:-6px;
+      border-radius:50%; border:1.5px solid rgba(199,161,91,.30);
+      animation:ripple 1.8s ease-out infinite;
+    }
+    .music-btn.playing::after{
+      content:""; position:absolute; inset:-13px;
+      border-radius:50%; border:1px solid rgba(199,161,91,.16);
+      animation:ripple 1.8s ease-out .6s infinite;
+    }
+    .music-label{
+      position:absolute; bottom:60px; right:0;
+      white-space:nowrap; font-size:11px; letter-spacing:.14em;
+      color:#c7a15b; background:rgba(15,13,10,.85);
+      border:1px solid rgba(199,161,91,.22); border-radius:999px;
+      padding:5px 12px; opacity:0; transform:translateY(4px);
+      transition:opacity .25s, transform .25s; pointer-events:none;
+    }
+    .music-btn:hover .music-label{ opacity:1; transform:translateY(0); }
+    @keyframes ripple{
+      0%  { transform:scale(1);    opacity:.7; }
+      100%{ transform:scale(1.38); opacity:0;  }
     }
   </style>
 </head>
@@ -443,10 +547,13 @@
           </div>
         </div>
 
-        <div class="anniv">
-          <span class="spark s1">✦</span>
-          <span class="spark s2">✦</span>
-          <span class="num">30</span>
+        <div class="anniv-wrap">
+          <canvas id="goldDust" width="160" height="160"></canvas>
+          <div class="ro1"></div>
+          <div class="ro2"></div>
+          <div class="anniv">
+            <span class="num">30</span>
+          </div>
         </div>
 
         <div class="eyebrow">KB KOOKMIN BANK ALUMNI</div>
@@ -537,5 +644,121 @@
       </footer>
     </main>
   </div>
+  <!-- YouTube IFrame API -->
+  <div id="yt-frame"></div>
+
+  <button class="music-btn" id="musicBtn" aria-label="음악 재생/정지">
+    <span class="music-icon" id="musicIcon">♪</span>
+    <span class="music-label" id="musicLabel">음악 재생</span>
+  </button>
+
+  <!-- 금빛 파티클 -->
+  <script>
+  (function(){
+    var c = document.getElementById('goldDust');
+    if(!c) return;
+    var ctx = c.getContext('2d');
+    var W = 160, H = 160, cx = W/2, cy = H/2;
+    var particles = [];
+    var colors = ['rgba(255,245,200,','rgba(240,210,130,','rgba(210,170,80,','rgba(255,230,150,'];
+
+    function Particle(){
+      var angle = Math.random() * Math.PI * 2;
+      var r = 44 + Math.random() * 18;
+      this.x  = cx + Math.cos(angle) * r;
+      this.y  = cy + Math.sin(angle) * r;
+      this.vx = (Math.random()-.5) * .4;
+      this.vy = -(Math.random() * .7 + .3);
+      this.life = 0;
+      this.maxLife = 80 + Math.random() * 60;
+      this.size = Math.random() * 1.6 + .6;
+      this.color = colors[Math.floor(Math.random()*colors.length)];
+    }
+
+    for(var i=0;i<22;i++){
+      var p = new Particle();
+      p.life = Math.random() * p.maxLife;
+      particles.push(p);
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<particles.length;i++){
+        var p = particles[i];
+        var t = p.life / p.maxLife;
+        var alpha = t < .2 ? t/.2 : t > .7 ? (1-t)/.3 : 1;
+        alpha *= .75;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+        ctx.fillStyle = p.color + alpha + ')';
+        ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life++;
+        if(p.life >= p.maxLife){
+          particles[i] = new Particle();
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+  </script>
+
+</body>
+    var btn  = document.getElementById('musicBtn');
+    var icon = document.getElementById('musicIcon');
+    var lbl  = document.getElementById('musicLabel');
+
+    // YouTube IFrame API 로드
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    function onYouTubeIframeAPIReady(){
+      player = new YT.Player('yt-frame',{
+        videoId:'fOZ-MySzAac',
+        playerVars:{
+          autoplay:1,
+          loop:1,
+          playlist:'fOZ-MySzAac',
+          controls:0,
+          disablekb:1,
+          fs:0,
+          rel:0
+        },
+        events:{
+          onReady: function(e){
+            ready = true;
+            e.target.setVolume(70);
+            e.target.playVideo();        // 첫 로드 시 자동재생 시도
+          },
+          onStateChange: function(e){
+            playing = (e.data === YT.PlayerState.PLAYING);
+            btn.classList.toggle('playing', playing);
+            icon.textContent = playing ? '❚❚' : '♪';
+            lbl.textContent  = playing ? '음악 정지' : '음악 재생';
+          }
+        }
+      });
+    }
+
+    // 브라우저 자동재생 차단 시 → 첫 터치/클릭으로 재생
+    function tryAutoplay(){
+      if(ready && player) player.playVideo();
+      document.removeEventListener('touchstart', tryAutoplay);
+      document.removeEventListener('click',      tryAutoplay);
+    }
+    document.addEventListener('touchstart', tryAutoplay, {once:true});
+    document.addEventListener('click',      tryAutoplay, {once:true});
+
+    // 플로팅 버튼 토글
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(!ready) return;
+      if(playing){ player.pauseVideo(); }
+      else        { player.playVideo();  }
+    });
+  </script>
 </body>
 </html>
